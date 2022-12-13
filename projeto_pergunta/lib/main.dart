@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const PerguntaApp());
-}
+void main() => runApp(const PerguntaApp());
 
-class PerguntaApp extends StatelessWidget {
+class PerguntaApp extends StatefulWidget {
   const PerguntaApp({super.key});
 
   // This widget is the root of your application.
@@ -28,4 +26,3 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
