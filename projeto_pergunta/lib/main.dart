@@ -1,28 +1,44 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const PerguntaApp());
+main() => runApp(PerguntaApp());
 
-class PerguntaApp extends StatefulWidget {
-  const PerguntaApp({super.key});
+class PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
+  void responder() {
+    setState(() {
+      perguntaSelecionada++;
+    });
+
+    print(perguntaSelecionada);
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final perguntas = [
+      "Qual é sua cor favoritas?",
+      "Qual é o seu animal favorito?"
+    ];
+
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+        home: Scaffold(
+      appBar: AppBar(
+        title: Text('Perguntas'),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+      body: Column(
+        children: <Widget>[
+          Text(perguntas[perguntaSelecionada]),
+          TextButton(child: Text("Resposta 1"), onPressed: responder),
+          TextButton(child: Text("Resposta 2"), onPressed: responder),
+          TextButton(child: Text("Resposta 3"), onPressed: responder)
+        ],
+      ),
+    ));
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+class PerguntaApp extends StatefulWidget {
+  PerguntaAppState createState() {
+    return PerguntaAppState();
+  }
 }
